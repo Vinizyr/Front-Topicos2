@@ -15,7 +15,7 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -36,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatFormFieldModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogModule
   ],
   providers: [MatIcon],
   bootstrap: [AppComponent]

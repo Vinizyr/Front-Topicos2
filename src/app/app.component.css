@@ -1,0 +1,7 @@
+.meu-dialog-personalizado {
+  /* Adicione seus estilos personalizados aqui */
+  width: 500px; /* Exemplo: largura do diálogo */
+  border-radius: 10px; /* Exemplo: borda arredondada */
+  /* Outros estilos personalizados */
+  color: #4CAF50;
+}

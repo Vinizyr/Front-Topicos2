@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { SolicitanteService } from './solicitante.service';
-import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { SolicitanteService } from './solicitante.service'
+import { Observable } from 'rxjs';
 
+
+
+export interface Solicitante {
+  id?: number,
+  nome: string
+}
 
 @Component({
   selector: 'app-solicitante',
@@ -12,35 +19,81 @@ import { FormControl } from '@angular/forms';
 
 export class SolicitanteComponent implements OnInit {
 
-  solicitantes: any[] = [];
-  novoSolicitante: string = '';
+  solicitantes = new Observable<Solicitante[]>;
+  solicitanteEmEdicao: any = null;
+  displayedColumns: string[] = ['Nome', 'Editar', 'Excluir'];
 
-  constructor(private solicitanteService: SolicitanteService) {}
+  //Formulário criar
+  nome: string = '';
+  id?: number = 0;
+  //Formulário editar
+  idEdit?: number = 0;
+  nomeEdit: string = '';
+  //Formulário excluir
+  nomeDel: string = '';
+
+  //var p abrir o modal
+  abrirModal = false;
+  abrirModalExcluir = false;
+
+  constructor(private solicitanteService: SolicitanteService,
+    private matDialog: MatDialog) {}
 
   ngOnInit() {
-    //this.refresh();
+    //quando entrar na página(onInit)
+    //ele vai exexutar esse método que traz a lista de solicitantes
+    this.refresh();
   }
 
 
 
   refresh() {
-    this.solicitanteService.get().subscribe((solicitantes) => {
-      this.solicitantes = solicitantes;
-    });
+    //indo no banco e trazendo a lista de solicitantes
+    this.solicitantes = this.solicitanteService.get();
   }
 
+  //novo solicitante
   adicionar() {
-    if (this.novoSolicitante.trim() !== '') {
-      this.solicitanteService.post(this.novoSolicitante).subscribe(() => {
-        this.refresh();
-        this.novoSolicitante = '';
-      });
+    if (!this.nome) {
+      alert("O nome não pode ser nulo.")
+      return
     }
+    this.solicitanteService.post({nome: this.nome}).subscribe(_ => this.refresh())
   }
 
-  excluir(solicitante: any) {
-    this.solicitanteService.delete(solicitante.id).subscribe(() => {
-      this.refresh();
-    });
+
+  editar(id: any) {
+    this.idEdit = id
+    if (!this.nomeEdit) {
+      alert("O nome não pode ser nulo.")
+      return
+    }
+    this.solicitanteService.update(this.idEdit, this.nomeEdit).subscribe(_ => this.refresh())
+    this.abrirModal = false;
+
+  }
+
+  //Aqui passa o solicitante da linha que foi clicado para o modal e mostra os dados
+  modalEditar(solicitante: Solicitante){
+    this.abrirModal = true;
+    this.nomeEdit = solicitante.nome
+    this.id = solicitante.id
+
+  }
+
+  //Mesma coisa para esse só que aqui não pode editar
+  //(no html tem um desabled que não deixar alterar o campo input)
+  modalDelete(solicitante: Solicitante){
+    this.abrirModalExcluir = true;
+    this.nomeDel = solicitante.nome
+    this.id = solicitante.id
+
+  }
+
+
+  excluir(id: any) {
+    this.id = id
+    this.solicitanteService.delete(this.id).subscribe(_ => this.refresh());
+    this.abrirModalExcluir = false
   }
 }
