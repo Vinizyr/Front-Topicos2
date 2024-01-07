@@ -9,13 +9,14 @@ import { SolicitanteComponent } from './solicitante/solicitante.component';
 import { ObjetivoEstrategicoComponent } from './objetivo-estrategico/objetivo-estrategico.component';
 import { GrupoDespesaComponent } from './grupo-despesa/grupo-despesa.component';
 import { ModalidadeAplicacaoComponent } from './modalidade-aplicacao/modalidade-aplicacao.component';
-import { TipoTransacaoComponent } from './tipo-transacao/tipo-transacao.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
+import { TipoTransacaoComponent } from './tipo-transacao/tipo-transacao.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { DialogModule } from 'primeng/dialog';
     GrupoDespesaComponent,
     ModalidadeAplicacaoComponent,
     TipoTransacaoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

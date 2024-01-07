@@ -1,1 +1,43 @@
-<p>grupo-despesa works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Código</th>
+      <th>Editar</th>
+      <th>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of grupoDespesa | async">
+      <td>{{item.nome}}</td>
+      <td>{{item.codigo}}</td>
+      <td><button class="edit" (click)="modalEditar(item)">Editar</button></td>
+      <td><button class="delete" (click)="modalDelete(item)">Excluir</button></td>
+    </tr>
+  </tbody>
+  <br>
+  <div>
+    <label for="nome">Adicionar solicitante:</label>
+    Nome:<input type="text" name="nome" [(ngModel)]="nome"/>
+    Código:<input type="number" name="codigo" [(ngModel)]="codigo"/>
+    <button (click)="adicionar()">Adicionar</button>
+  </div>
+</table>
+
+<div *ngIf="abrirModal" class="backdrop"></div>
+<p-dialog header="Editar Solicitante" [responsive]="true" class="meu-dialog-personalizado" [(visible)]="abrirModal" [modal]="true" [style]="{ width: '70vw' }" [draggable]="false" [resizable]="false">
+  <label for="nome">Editar :</label>
+    Id:<input type="text" name="id" [(ngModel)]="id" disabled/>
+    Nome:<input type="text" name="nome" [(ngModel)]="nomeEdit"/>
+    Nome:<input type="text" name="nome" [(ngModel)]="codigo" disabled/>
+    <button (click)="editar(id)">Salvar</button>
+</p-dialog>
+
+<div *ngIf="abrirModalExcluir" class="backdrop"></div>
+<p-dialog header="Excluir Solicitante" [responsive]="true" class="meu-dialog-personalizado" [(visible)]="abrirModalExcluir" [modal]="true" [style]="{ width: '70vw' }" [draggable]="false" [resizable]="false">
+  <label for="nome">Excluir:</label>
+    Id:<input type="text" name="id" [(ngModel)]="id" disabled/>
+    Nome:<input type="text" name="nome" [(ngModel)]="nomeDel" disabled/>
+    Código:<input type="text" name="nome" [(ngModel)]="codigo" disabled/>
+    <button (click)="excluir(id)" style="background-color: red;">Excluir</button>
+</p-dialog>

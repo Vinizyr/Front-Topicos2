@@ -1,0 +1,66 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+button.edit {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+button.delete {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.meu-dialog-personalizado .ui-dialog-content{
+  /* Adicione seus estilos personalizados aqui */
+  width: 500px; /* Exemplo: largura do diálogo */
+  border-radius: 10px; /* Exemplo: borda arredondada */
+  /* Outros estilos personalizados */
+  background-color: #ffffff;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8); /* Cor de fundo com opacidade */
+  backdrop-filter: blur(5px); /* Adiciona o efeito de desfoque */
+  z-index: 999; /* Certifique-se de que esteja acima do p-dialog */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

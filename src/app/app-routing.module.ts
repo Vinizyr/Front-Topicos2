@@ -5,6 +5,7 @@ import { TipoTransacaoComponent } from './tipo-transacao/tipo-transacao.componen
 import { ObjetivoEstrategicoComponent } from './objetivo-estrategico/objetivo-estrategico.component';
 import { ModalidadeAplicacaoComponent } from './modalidade-aplicacao/modalidade-aplicacao.component';
 import { GrupoDespesaComponent } from './grupo-despesa/grupo-despesa.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path: 'solicitante', component: SolicitanteComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'objetivo-estrategico', component: ObjetivoEstrategicoComponent},
   {path: 'modalidade-aplicacao', component: ModalidadeAplicacaoComponent},
   {path: 'grupo-despesa', component: GrupoDespesaComponent},
+  {path: '', component: HomeComponent}
 ];
 
 

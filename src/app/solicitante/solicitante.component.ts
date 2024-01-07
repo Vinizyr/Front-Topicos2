@@ -20,8 +20,6 @@ export interface Solicitante {
 export class SolicitanteComponent implements OnInit {
 
   solicitantes = new Observable<Solicitante[]>;
-  solicitanteEmEdicao: any = null;
-  displayedColumns: string[] = ['Nome', 'Editar', 'Excluir'];
 
   //Formulário criar
   nome: string = '';
