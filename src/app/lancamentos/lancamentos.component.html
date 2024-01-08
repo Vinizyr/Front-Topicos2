@@ -1,0 +1,221 @@
+<table>
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Valor</th>
+      <th>Contratado</th>
+      <th>Ged</th>
+      <th>TipoLancamento</th>
+      <th>Unidade</th>
+      <th>UnidadeOrcamentaria</th>
+      <th>ElementoDespesa</th>
+      <th>Acao</th>
+      <th>Programa</th>
+      <th>FonteRecurso</th>
+      <th>Solicitante</th>
+      <th>ObjetivoEstrategico</th>
+      <th>GrupoDespesa</th>
+      <th>ModalidadeAplicacao</th>
+      <th>TipoTransacao</th>
+      <th>Editar</th>
+      <th>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of Lancamentos | async">
+      <td>{{ item.descricao }}</td>
+      <td>{{ item.valor }}</td>
+      <td>{{ item.contratado }}</td>
+      <td>{{ item.ged }}</td>
+      <td>{{ item.idTipoLancamento }}</td>
+      <td>{{ item.idUnidade }}</td>
+      <td>{{ item.idUnidadeOrcamentaria }}</td>
+      <td>{{ item.idElementoDespesa }}</td>
+      <td>{{ item.idAcao }}</td>
+      <td>{{ item.idPrograma }}</td>
+      <td>{{ item.idFonteRecurso }}</td>
+      <td>{{ item.idSolicitante }}</td>
+      <td>{{ item.idObjetivoEstrategico }}</td>
+      <td>{{ item.idGrupoDespesa }}</td>
+      <td>{{ item.idModalidadeAplicacao }}</td>
+      <td>{{ item.idTipoTransacao }}</td>
+      <td><button class="edit" (click)="modalEditar(item)">Editar</button></td>
+      <td>
+        <button class="delete" (click)="modalDelete(item)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="add-inputs">
+  <label for="descricao">Adicionar lançamento:</label>
+  <input
+    type="text"
+    placeholder="Descrição"
+    name="descricao"
+    [(ngModel)]="descricao"
+  />
+  <input type="number" placeholder="Valor" name="valor" [(ngModel)]="valor" />
+  <input
+    type="text"
+    placeholder="Contratado"
+    name="contratado"
+    [(ngModel)]="contratado"
+  />
+  <input
+    type="date"
+    placeholder="DataLancamento"
+    name="dataLancamento"
+    [(ngModel)]="dataLancamento"
+  />
+  <input type="text" placeholder="Ged" name="ged" [(ngModel)]="ged" />
+  <label for="LancamentoInvalido">lançamento Invalido:</label>
+  <input
+    type="checkbox"
+    placeholder="LancamentoInvalido"
+    name="lancamentoInvalido"
+    [(ngModel)]="lancamentoInvalido"
+  />
+  <input
+    type="number"
+    placeholder="NumeroLancamento"
+    name="numeroLancamento"
+    [(ngModel)]="numeroLancamento"
+  />
+  <input
+    type="number"
+    placeholder="TipoLancamento"
+    name="idTipoLancamento"
+    [(ngModel)]="idTipoLancamento"
+  />
+  <input
+    type="number"
+    placeholder="Unidade"
+    name="idUnidade"
+    [(ngModel)]="idUnidade"
+  />
+  <input
+    type="number"
+    placeholder="UnidadeOrcamentaria"
+    name="idUnidadeOrcamentaria"
+    [(ngModel)]="idUnidadeOrcamentaria"
+  />
+  <input
+    type="number"
+    placeholder="ElementoDespesa"
+    name="idElementoDespesa"
+    [(ngModel)]="idElementoDespesa"
+  />
+  <input type="number" placeholder="Ação" name="idAcao" [(ngModel)]="idAcao" />
+  <input
+    type="number"
+    placeholder="Programa"
+    name="idPrograma"
+    [(ngModel)]="idPrograma"
+  />
+  <input
+    type="number"
+    placeholder="LancamentoPai"
+    name="idLancamentoPai"
+    [(ngModel)]="idLancamentoPai"
+  />
+  <input
+    type="number"
+    placeholder="FonteRecurso"
+    name="idFonteRecurso"
+    [(ngModel)]="idFonteRecurso"
+  />
+  <input
+    type="number"
+    placeholder="Solicitante"
+    name="idSolicitante"
+    [(ngModel)]="idSolicitante"
+  />
+  <input
+    type="number"
+    placeholder="ObjetivoEstrategico"
+    name="idObjetivoEstrategico"
+    [(ngModel)]="idObjetivoEstrategico"
+  />
+  <input
+    type="number"
+    placeholder="GrupoDespesa"
+    name="idGrupoDespesa"
+    [(ngModel)]="idGrupoDespesa"
+  />
+  <input
+    type="number"
+    placeholder="ModalidadeAplicacao"
+    name="idModalidadeAplicacao"
+    [(ngModel)]="idModalidadeAplicacao"
+  />
+  <input
+    type="number"
+    placeholder="TipoTransacao"
+    name="idTipoTransacao"
+    [(ngModel)]="idTipoTransacao"
+  />
+  <input
+    type="number"
+    placeholder="AnoOrcamento"
+    name="anoOrcamento"
+    [(ngModel)]="anoOrcamento"
+  />
+  <button (click)="adicionar()">Adicionar</button>
+</div>
+
+<div *ngIf="abrirModal" class="backdrop"></div>
+<p-dialog
+  header="Editar Unidade"
+  [responsive]="true"
+  class="meu-dialog-personalizado"
+  [(visible)]="abrirModal"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <label for="descricao">Editar :</label>
+  <input
+    type="text"
+    placeholder="Descrição"
+    name="descricao"
+    [(ngModel)]="descricaoEdit"
+  />
+  <input
+    type="text"
+    placeholder="Contratado"
+    name="contratado"
+    [(ngModel)]="contratadoEdit"
+  />
+
+  <input type="text" placeholder="Ged" name="ged" [(ngModel)]="gedEdit" />
+  <label for="LancamentoInvalido">lançamento Invalido:</label>
+  <input
+    type="checkbox"
+    placeholder="LancamentoInvalido"
+    name="lancamentoInvalido"
+    [(ngModel)]="lancamentoInvalidoEdit"
+  />
+  <button (click)="editar(id)">Salvar</button>
+</p-dialog>
+
+<div *ngIf="abrirModalExcluir" class="backdrop"></div>
+<p-dialog
+  header="Excluir Unidade"
+  [responsive]="true"
+  class="meu-dialog-personalizado"
+  [(visible)]="abrirModalExcluir"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <label for="descricao">Excluir:</label>
+  Id:<input type="text" name="id" [(ngModel)]="id" disabled /> Descricao:<input
+    type="text"
+    name="descricao"
+    [(ngModel)]="descricao"
+    disabled
+  />
+  <button (click)="excluir(id)" style="background-color: red">Excluir</button>
+</p-dialog>

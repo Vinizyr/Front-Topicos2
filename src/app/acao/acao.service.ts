@@ -1,24 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GrupoDespesaComponent } from '../grupo-despesa/grupo-despesa.component'
+import { AcaoComponent } from './acao.component'
 import { tap } from 'rxjs';
-import { GrupoDespesa } from './grupo-despesa.component';
+import { Acao } from './acao.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GrupoDespesaService {
+export class AcaoService {
 
-  private readonly apiUrl = 'api/te2/grupo-despesa'
+  private readonly apiUrl = 'api/te2/acoes'
   constructor(private http: HttpClient) { }
 
   get(){
-    return this.http.get<GrupoDespesa[]>(`${this.apiUrl}`).pipe(tap(dados => console.log(dados)))
+    return this.http.get<Acao[]>(`${this.apiUrl}`).pipe(tap(dados => console.log(dados)))
   }
 
-  post(item: GrupoDespesa) {
+  post(item: Acao) {
     console.log(item)
-    return this.http.post<GrupoDespesa>(`${this.apiUrl}`, item);
+    return this.http.post<Acao>(`${this.apiUrl}`, item);
   }
 
   update(id: any, nome: string){

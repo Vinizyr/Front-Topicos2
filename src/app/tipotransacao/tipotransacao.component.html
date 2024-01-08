@@ -1,0 +1,40 @@
+<table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tipotransacaos | async">
+        <td>{{item.nome}}</td>
+        <td><button class="edit" (click)="modalEditar(item)">Editar</button></td>
+        <td><button class="delete" (click)="modalDelete(item)">Excluir</button></td>
+      </tr>
+    </tbody>
+    <br>
+    <div>
+      <label for="nome">Adicionar tipotransacao:</label>
+      <input type="text" name="nome" [(ngModel)]="nome"/>
+      <button (click)="adicionar()">Adicionar</button>
+    </div>
+  </table>
+  
+  <div *ngIf="abrirModal" class="backdrop"></div>
+  <p-dialog header="Editar Tipotransacao" [responsive]="true" class="meu-dialog-personalizado" [(visible)]="abrirModal" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <label for="nome">Editar :</label>
+      Id:<input type="text" name="id" [(ngModel)]="id" disabled/>
+      Nome:<input type="text" name="nome" [(ngModel)]="nomeEdit"/>
+      <button (click)="editar(id)">Salvar</button>
+  </p-dialog>
+  
+  <div *ngIf="abrirModalExcluir" class="backdrop"></div>
+  <p-dialog header="Excluir Tipotransacao" [responsive]="true" class="meu-dialog-personalizado" [(visible)]="abrirModalExcluir" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <label for="nome">Excluir:</label>
+      Id:<input type="text" name="id" [(ngModel)]="id" disabled/>
+      Nome:<input type="text" name="nome" [(ngModel)]="nomeDel" disabled/>
+      <button (click)="excluir(id)" style="background-color: red;">Excluir</button>
+  </p-dialog>
+  

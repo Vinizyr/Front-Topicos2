@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SolicitanteComponent } from './solicitante/solicitante.component';
-import { ObjetivoEstrategicoComponent } from './objetivo-estrategico/objetivo-estrategico.component';
+import { ObjetivoestrategicoComponent } from './objetivoestrategico/objetivoestrategico.component';
 import { GrupoDespesaComponent } from './grupo-despesa/grupo-despesa.component';
 import { ModalidadeAplicacaoComponent } from './modalidade-aplicacao/modalidade-aplicacao.component';
 import {MatMenuModule} from '@angular/material/menu';
@@ -15,18 +15,32 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
-import { TipoTransacaoComponent } from './tipo-transacao/tipo-transacao.component';
+import { TipotransacaoComponent } from './tipotransacao/tipotransacao.component';
 import { HomeComponent } from './home/home.component';
+import { UnidadeComponent } from './unidade/unidade.component';
+import { LancamentoComponent } from './lancamentos/lancamentos.component';
+import { TipolancamentoComponent } from './tipolancamento/tipolancamento.component';
+import { ProgramaComponent } from './programa/programa.component';
+import { AcaoComponent } from './acao/acao.component';
+import { ElementodespesaComponent } from './elementodespesa/elementodespesa.component';
+import { UnidadeorcamentariaComponent } from './unidadeorcamentaria/unidadeorcamentaria.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SolicitanteComponent,
-    ObjetivoEstrategicoComponent,
+    ObjetivoestrategicoComponent,
     GrupoDespesaComponent,
     ModalidadeAplicacaoComponent,
-    TipoTransacaoComponent,
+    TipotransacaoComponent,
+    UnidadeComponent,
+    LancamentoComponent,
+    TipolancamentoComponent,
+    ProgramaComponent,
+    AcaoComponent,
+    ElementodespesaComponent,
+    UnidadeorcamentariaComponent,
     HomeComponent
   ],
   imports: [

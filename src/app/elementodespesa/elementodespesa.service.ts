@@ -1,24 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GrupoDespesaComponent } from '../grupo-despesa/grupo-despesa.component'
+import { ElementodespesaComponent } from './elementodespesa.component'
 import { tap } from 'rxjs';
-import { GrupoDespesa } from './grupo-despesa.component';
+import { Elementodespesa } from './elementodespesa.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GrupoDespesaService {
+export class ElementodespesaService {
 
-  private readonly apiUrl = 'api/te2/grupo-despesa'
+  private readonly apiUrl = 'api/te2/elementos-despesa'
   constructor(private http: HttpClient) { }
 
   get(){
-    return this.http.get<GrupoDespesa[]>(`${this.apiUrl}`).pipe(tap(dados => console.log(dados)))
+    return this.http.get<Elementodespesa[]>(`${this.apiUrl}`).pipe(tap(dados => console.log(dados)))
   }
 
-  post(item: GrupoDespesa) {
+  post(item: Elementodespesa) {
     console.log(item)
-    return this.http.post<GrupoDespesa>(`${this.apiUrl}`, item);
+    return this.http.post<Elementodespesa>(`${this.apiUrl}`, item);
   }
 
   update(id: any, nome: string){
