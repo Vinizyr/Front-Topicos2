@@ -72,7 +72,7 @@ export class GrupoDespesaComponent implements OnInit {
     this.abrirModal = true;
     this.nomeEdit = grupoDespesa.nome
     this.id = grupoDespesa.id
-
+    this.codigo = grupoDespesa.codigo
   }
 
   //Mesma coisa para esse só que aqui não pode editar
@@ -81,7 +81,7 @@ export class GrupoDespesaComponent implements OnInit {
     this.abrirModalExcluir = true;
     this.nomeDel = grupoDespesa.nome
     this.id = grupoDespesa.id
-
+    this.codigo = grupoDespesa.codigo
   }
 
 
